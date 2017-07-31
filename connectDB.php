@@ -5,14 +5,13 @@
 		$login = 'root';
 		$password = '';
 
-		$db = mysql_connect($server, $login, $password)or die("La connexion à échouée.");
-		mysql_select_db($name_db, $db)or die("Impossible de choisir cette base de données");
+		$db = mysqli_connect($server, $login, $password, $name_db)or die("La connexion à échouée.");
 
 		return $db;
 	}
 
 	function disconnect_db($db) {
-		mysql_close($db);
+		mysqli_close($db);
 		$db = 0;
 	}
 ?>

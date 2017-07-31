@@ -11,6 +11,13 @@ p.titre {
 	margin-top:1em;
 }
 
+div.formulaire-errors {
+	padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
 fieldset {
 	border:none;
 	margin-bottom:1em;

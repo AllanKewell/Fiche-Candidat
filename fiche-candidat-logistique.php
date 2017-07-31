@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,7 +9,13 @@
 	<title>Formulaire Logistique</title>
 </head>
 <body>
-	<form method="post" action="fiche-candidat-logistique/reponse.php">
+	<form method="post" action="reponse-logistique.php">
+
+		<?php if(array_key_exists('errors', $_SESSION)): ?>
+			<div class="formulaire-errors">
+				<?= implode('<br>', $_SESSION['errors']); ?>
+			</div>
+		<?php unset($_SESSION['errors']); endif; ?>
 		<p class="titre">Fiche candidat pour métier logistique</p>
 		
 		<fieldset id="formulaire">
