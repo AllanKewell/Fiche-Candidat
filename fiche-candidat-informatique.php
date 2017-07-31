@@ -18,7 +18,7 @@
 				<div class="form-group">
 					<div class="col-md-2">
 						<label class="control-label">Civilité</label>
-						<select class="form-control custom-select">
+						<select class="form-control custom-select" name="civilite">
 						  <option value="1">Mr.</option>
 						  <option value="2">Mme.</option>
 						</select>
@@ -39,13 +39,13 @@
 				<div class="form-group">
 					<div class="col-md-6">
 						<label class="control-label">Email</label>
-						<input class="form-control" type="email" name="city" placeholder="exemple@mail.com" required />
+						<input class="form-control" type="email" name="email" placeholder="exemple@mail.com" required />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 						<label class="control-label">Sexe</label>
-						<select class="form-control custom-select">
+						<select class="form-control custom-select" name="gender">
 						  <option value="1">Homme</option>
 						  <option value="2">Femme</option>
 						</select>
