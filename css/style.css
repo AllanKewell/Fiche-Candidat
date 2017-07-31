@@ -1,0 +1,43 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+	font-weight: 300;
+}
+
+#wrapper {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 30px 0;
+}
+
+.form-group {
+	margin-bottom: 0;
+	text-align: left;
+}
+
+label {
+	font-weight: normal;
+	margin-top: 15px;
+}
+
+input {
+	border: 2px solid #CCC !important;
+	height: 35px;
+	border-radius: 3px;
+	max-width: 100%;
+}
+
+.input-group-addon {
+  border: 2px solid #CCC !important;
+  border-right: 0px !important;
+}
+
+.btn {
+	margin-top: 20px;
+	border: 0;
+	border-radius: 3px;
+}
