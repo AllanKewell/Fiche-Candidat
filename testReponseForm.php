@@ -8,7 +8,7 @@
 <body>
 	<?php
 		try {
-			$bdd = new PDO('mysql:host=localhost;dbname=candidat;charset=utf8', 'root', '');
+			$bdd = new PDO('mysql:host=localhost;dbname=candidat;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 		} catch (Exception $e) {
 			die('Erreur : ' . $e->getMessage());
 		}
@@ -18,9 +18,9 @@
 	?>
 		<p>
 			<strong>Jeu</strong> : <?php echo $donnees['nom']; ?> <br>
-			Le possesseur du jeu est : <?php echo $donnees['possesseur']; ?>, et il le vend à <?php $donnees['prix']; ?> € ! <br>
+			Le possesseur du jeu est : <?php echo $donnees['possesseur']; ?>, et il le vend à <?php echo $donnees['prix']; ?> € ! <br>
 			Ce jeu fonctionne sur <?php echo $donnees['console']; ?> et on peut y jouer à <?php echo $donnees['nbre_joueurs_max']; ?> au maximum <br>
-			<?php echo $donnees['possesseur']; ?> a laissé ces commentaires sur <?php $donnees['nom']; ?> : <em><?php $donnees['commentaires'] ?></em>
+			<?php echo $donnees['possesseur']; ?> a laissé ces commentaires sur <?php echo $donnees['nom']; ?> : <em><?php echo $donnees['commentaires'] ?></em>
 		</p>
 	<?php
 		}
@@ -38,5 +38,56 @@
 	<p>Nom : <?php echo $_POST['permis']?> </p>
 	<p>Nom : <?php echo $_POST['poleemploi']?> </p>
 	<p>Pour changer de nom, clique <a href="fiche-candidat-informatique.php">ici</a></p>
+
+
+	<?php
+		try {
+			$hxh = new PDO('mysql:host=localhost;dbname=candidat;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		} catch (Exception $e) {
+			die('Erreur : ' . $e->getMessage());
+		}
+
+		$req = $hxh->prepare('SELECT * FROM jeux_video WHERE possesseur=:proprietaire AND prix<:price ORDER BY prix');
+		$req->execute(array('proprietaire' => $_POST['surname'], 'price' => $_POST['city']));
+
+		echo '<ul>';
+		while($rep = $req->fetch()) {
+			echo '<li>' . $rep['nom'] . ' (' . $rep['prix'] . ' €)</li>';
+		}
+		echo '</ul>';
+
+
+		$ins = $hxh->prepare('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES (:nom, :possesseur, :console, :prix, :nbre_joueurs_max, :commentaires)');
+		echo 'Jeu bien ajouté !';
+		$ins->execute(array(
+			'nom' => $_POST['name'],
+			'possesseur' => $_POST['surname'],
+			'console' => $_POST['address'],
+			'prix' => $_POST['city'],
+			'nbre_joueurs_max' => $_POST['zipcode'],
+			'commentaires' => $_POST['phonenumber']
+			));
+
+		$req->closeCursor();
+	?>
+
+
+
+
+
+	<!-- <?php
+		try {
+			$bbc = new PDO('mysql:host=localhost;dbname=candidat;charset=utf8', 'root', '');
+			$requete = $bdd->query('SELECT * FROM jeux_video WHERE possesseur=\'Patrick\' AND prix < 20 ORDER BY prix DESC LIMIT 2,2');
+		} catch (Exception $e) {
+			die("Erreur : " . $e.getMessage());
+		}
+
+		echo 'Liste des jeux de Patrick : ' . '<br /><br />';
+		while($reponse = $requete->fetch()) {
+			echo $reponse['nom'] .'. Prix : ' . $reponse['prix'] . '<br />';
+		}
+		$requete->closeCursor();
+	?> -->
 </body>
 </html>
