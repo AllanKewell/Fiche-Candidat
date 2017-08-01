@@ -17,70 +17,90 @@
 			<fieldset>
 				<div class="form-group">
 					<div class="col-md-2">
-						<label class="control-label">Civilité</label>
-						<select class="form-control custom-select" name="civilite">
-						  <option value="1">Mr.</option>
-						  <option value="2">Mme.</option>
+						<label class="control-label" for="civilite">Civilité</label>
+						<select class="form-control custom-select" id="civilite" name="civilite">
+						  <option value="mr" selected="selected">Mr.</option>
+						  <option value="mme">Mme.</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-5">
-						<label class="control-label">Nom</label>
-						<input class="form-control" type="text" name="name" placeholder="Mon nom" required autofocus />
+						<label class="control-label" for="name">Nom</label>
+						<input class="form-control" type="text" id="name" name="name" placeholder="Mon nom" required autofocus />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-5">
-						<label class="control-label">Prénom</label>
-						<input class="form-control" type="text" name="surname" placeholder="Mon prénom" required />
+						<label class="control-label" for="surname">Prénom</label>
+						<input class="form-control" type="text" id="surname" name="surname" placeholder="Mon prénom" required />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-						<label class="control-label">Email</label>
-						<input class="form-control" type="email" name="email" placeholder="exemple@mail.com" required />
+						<label class="control-label" for="city">Email</label>
+						<input class="form-control" type="email" id="city" name="city" placeholder="exemple@mail.com" required />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-						<label class="control-label">Sexe</label>
-						<select class="form-control custom-select" name="gender">
-						  <option value="1">Homme</option>
-						  <option value="2">Femme</option>
+						<label class="control-label" for="gender">Sexe</label>
+						<select id="gender" class="form-control custom-select" name="gender">
+						  <option value="homme" selected="selected">Homme</option>
+						  <option value="femme">Femme</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-						<label class="control-label">Adresse</label>
-						<input class="form-control" type="text" name="address" placeholder="N° de la rue + nom de la rue" required />
+						<label class="control-label" for="address">Adresse</label>
+						<input class="form-control" type="text" id="address" name="address" placeholder="N° de la rue + nom de la rue" required />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-						<label class="control-label">Ville</label>
-						<input class="form-control" type="text" name="city" placeholder="Ville" required />
+						<label class="control-label" for="city">Ville</label>
+						<input class="form-control" type="text" id="city" name="city" placeholder="Ville" required />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-						<label class="control-label" text">Code Postal</label>
-						<input class="form-control" type="text" name="zipcode" placeholder="95140" required />
+						<label class="control-label" for="zipcode">Code Postal</label>
+						<input class="form-control" type="text" id="zipcode" name="zipcode" placeholder="95140" required />
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-						<label class="control-label">Téléphone</label>
+						<label class="control-label" for="phonenumber">Téléphone</label>
 						<div class="input-group">
 							<span class="input-group-addon">+33</span>
-							<input class="form-control" type="tel" name="phonenumber" placeholder="06 12 34 56 78" required />
+							<input class="form-control" type="tel" id="phonenumber" name="phonenumber" placeholder="06 12 34 56 78" required />
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-12">
-						<button class="btn btn-primary btn-block">Envoyer</button>
+						<label class="control-label" for="message">Message supplémentaire</label>
+						<textarea class="form-control" id="message" name="message" placeholder="Facultatif" rows="3" ></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-6">
+						<label class="control-label">Véhiculé ?</label>
+						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="permis" value="oui">Oui</label>
+						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="permis" value="non" checked>Non</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-6">
+						<label class="control-label">Inscrit PE ?</label>
+						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="poleemploi" value="oui">Oui</label>
+						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="poleemploi" value="non" checked>Non</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-primary btn-block">Envoyer</button>
 					</div>
 				</div>
 			</fieldset>
@@ -88,3 +108,16 @@
 	</div>
 </body>
 </html>
+
+<!-- <div class="form-group">
+	<p>Commentaire : Bouton radio en dessous du label</p>
+	<div class="col-md-3">
+		<label class="control-label">Véhiculé ?</label>
+		<div class="radio">
+			<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="permis">Oui</label>
+		</div>
+			<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="permis">Non</label>
+		<div class="radio">
+		</div>
+	</div>
+</div> -->

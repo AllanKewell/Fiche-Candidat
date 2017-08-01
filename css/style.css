@@ -19,6 +19,7 @@ h1 {
 	text-align: left;
 }
 
+
 label {
 	font-weight: normal;
 	margin-top: 15px;
@@ -29,6 +30,16 @@ input {
 	height: 35px;
 	border-radius: 3px;
 	max-width: 100%;
+}
+
+.radiolabel {
+	margin-top: -2px !important;
+	margin-left: 10px;
+}
+
+.radioinput {
+	height: 0;
+	border-radius: 0;
 }
 
 .input-group-addon {
