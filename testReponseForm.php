@@ -7,12 +7,14 @@
 </head>
 <body>
 	<?php
+
+		header('Location: fiche-candidat-informatique.php');
 		try {
 			$bdd = new PDO('mysql:host=localhost;dbname=candidat;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 		} catch (Exception $e) {
 			die('Erreur : ' . $e->getMessage());
 		}
-		$reponse = $bdd->query('SELECT * FROM jeux_video');
+		$reponse = $bdd->query('SELECT * FROM jeux_video') or die($bdd->errorInfo());
 
 		while($donnees = $reponse->fetch()) {
 	?>
@@ -57,7 +59,7 @@
 		echo '</ul>';
 
 
-		$ins = $hxh->prepare('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES (:nom, :possesseur, :console, :prix, :nbre_joueurs_max, :commentaires)');
+		/*$ins = $hxh->prepare('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES (:nom, :possesseur, :console, :prix, :nbre_joueurs_max, :commentaires)');
 		echo 'Jeu bien ajouté !';
 		$ins->execute(array(
 			'nom' => $_POST['name'],
@@ -66,8 +68,17 @@
 			'prix' => $_POST['city'],
 			'nbre_joueurs_max' => $_POST['zipcode'],
 			'commentaires' => $_POST['phonenumber']
+			));*/
+
+		$upd = $hxh->prepare('UPDATE jeux_video SET prix=:price WHERE nom=:game');
+		$upd->execute(array(
+			'price' => $_POST['name'],
+			'game' => $_POST['address']
 			));
 
+/*		$del = $bdd->prepare('DELETE FROM jeux_video WHERE nom=:game');
+		$del->execute(array('game' => $_POST['address']));
+*/
 		$req->closeCursor();
 	?>
 

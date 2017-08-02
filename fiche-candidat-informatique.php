@@ -13,7 +13,7 @@
 			<img src="img/clefjob.png">
 		</figure>
 		<h1>Formulaire - Informatique</h1>
-		<form id="form" method="post" action="testReponseForm.php">
+		<form id="form" method="post" action="traitement-form.php">
 			<fieldset>
 				<div class="form-group">
 					<div class="col-md-2">
@@ -38,8 +38,8 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
-						<label class="control-label" for="city">Email</label>
-						<input class="form-control" type="email" id="city" name="city" placeholder="exemple@mail.com" required />
+						<label class="control-label" for="email">Email</label>
+						<input class="form-control" type="email" id="email" name="email" placeholder="exemple@mail.com" required />
 					</div>
 				</div>
 				<div class="form-group">
