@@ -3,6 +3,16 @@
 	padding: 0;
 }
 
-div {
-	background-color: #e2e2e2;
+.maindiv {
+	background-color: #f3f3f3;
+}
+
+.hoverstyle:hover {
+	color: #fff;
+    background-color: #428bca !important;
+    border-color: #285e8e;
+}
+
+.finputs {
+	margin-bottom: 10px;
 }
