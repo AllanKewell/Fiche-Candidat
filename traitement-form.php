@@ -31,6 +31,8 @@
 			'permis' => strip_tags($_POST['permis']),
 			'poleemploi' => strip_tags($_POST['poleemploi'])
 			));
+
+		$insertion->closeCursor();
 	?>
 </body>
 </html>
