@@ -15,9 +15,10 @@
 			die('Erreur : ' . $e->getMessage());
 		}
 		
-		$insertion = $bdd->prepare('INSERT INTO informatique(civilite, nom, prenom, email, sexe, adresse, ville, codepostal, telephone, message, permis, poleemploi) VALUES (:civilite, :nom, :prenom, :email, :sexe, :adresse, :ville, :codepostal, :telephone, :message, :permis, :poleemploi)');
+		$insertion = $bdd->prepare('INSERT INTO informatique(date_creation, poste, civilite, nom, prenom, email, sexe, adresse, ville, codepostal, telephone, message, permis, poleemploi) VALUES (CURDATE(), :poste, :civilite, :nom, :prenom, :email, :sexe, :adresse, :ville, :codepostal, :telephone, :message, :permis, :poleemploi)');
 		$insertion->execute(array(
 			'civilite' => strip_tags($_POST['civilite']),
+			'poste' => strip_tags($_POST['poste']),
 			'nom' => strip_tags($_POST['name']),
 			'prenom' => strip_tags($_POST['surname']),
 			'email' => strip_tags($_POST['email']),

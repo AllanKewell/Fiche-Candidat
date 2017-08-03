@@ -12,9 +12,16 @@
 		<figure>
 			<img src="img/clefjob.png">
 		</figure>
-		<h1>Formulaire - Informatique</h1>
-		<form id="form" method="post" action="traitement-form.php">
+		<h1>Fiche Candidat - Informatique</h1>
+		<form id="form" method="post" action="traitement-form.php" style="margin-top: 40px">
 			<fieldset>
+				<div class="col-md-12">
+					<div class="input-group">
+							<span class="input-group-addon">Poste</span>
+							<input class="form-control" type="text" id="poste" name="poste" value="Informatique" disabled/>
+					</div>
+				</div>
+
 				<div class="form-group">
 					<div class="col-md-2">
 						<label class="control-label" for="civilite">Civilité</label>
@@ -46,8 +53,8 @@
 					<div class="col-md-6">
 						<label class="control-label" for="gender">Sexe</label>
 						<select id="gender" class="form-control custom-select" name="gender">
-						  <option value="homme" selected="selected">Homme</option>
-						  <option value="femme">Femme</option>
+						  <option value="Homme" selected="selected">Homme</option>
+						  <option value="Femme">Femme</option>
 						</select>
 					</div>
 				</div>
@@ -87,15 +94,15 @@
 				<div class="form-group">
 					<div class="col-md-6">
 						<label class="control-label">Véhiculé ?</label>
-						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="permis" value="oui">Oui</label>
-						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="permis" value="non" checked>Non</label>
+						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="permis" value="Oui">Oui</label>
+						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="permis" value="Non" checked>Non</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 						<label class="control-label">Inscrit PE ?</label>
-						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="poleemploi" value="oui">Oui</label>
-						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="poleemploi" value="non" checked>Non</label>
+						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="poleemploi" value="Oui">Oui</label>
+						<label class="radiolabel radio-inline"><input class="radioinput" type="radio" name="poleemploi" value="Non" checked>Non</label>
 					</div>
 				</div>
 				<div class="form-group">

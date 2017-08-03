@@ -39,6 +39,7 @@
 		$dateformulaire = date_format(date_create_from_format('Y-m-d', $result['date_creation']), 'd/m/Y');
 		echo '<tr>' . 
 				'<td><span>' . $dateformulaire . '</span></td>' .
+				'<td><span>' . $result['poste'] . '</span></td>' .
 				'<td><span>' . $result['nom'] . '</span></td>' .
 				'<td><span>' . $result['prenom'] . '</span></td>' .
 				'<td><span>' . $result['email'] . '</span></td>' .
@@ -50,11 +51,11 @@
 			'</tr>';
 	}
 
-	$modifs = $bdd->prepare('UPDATE informatique SET date_creation=:datec WHERE id BETWEEN 1 AND 7');
+/*	$modifs = $bdd->prepare('UPDATE informatique SET poste=:datec WHERE id BETWEEN 1 AND 7');
 	$modifs->execute(array(
 		'datec' => '2017-08-01',
 		));
-	$modifs->closeCursor();
+	$modifs->closeCursor();*/
 
 	$donnees->closeCursor();
 ?>

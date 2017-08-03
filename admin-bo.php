@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 	<title>Back Office Admin</title>
 </head>
-<body>
+<body onload="requete()">
 
 	<div class="container-fluid maindiv">
 
@@ -24,13 +24,13 @@
 			</div>
 		</header>
 
-		<div class="row text-center text-info" style="margin-top: -20px">
-			<h1>Formulaires des candidats</h1>
+		<div class="row text-center text-primary" style="margin-top: -20px">
+			<h1>Fiches Candidats</h1>
 		</div>
 
 		<div class="row">
 			<div class="col-md-12">
-				<div class="col-md-12 text-center text-info">
+				<div class="col-md-12 text-center text-primary">
 					<h3>Filtrer la recherche</h3>
 				</div>
 			</div>
@@ -74,24 +74,24 @@
 					</div>
 				</div>
 				<div class="col-md-3">
-					<select id="gender" class="form-control custom-select" name="gender">
+					<select id="fgender" class="form-control custom-select" name="fgender">
 						<option value="" selected="selected">Choisir le sexe</option>
-						<option value="homme">Homme</option>
-						<option value="femme">Femme</option>
+						<option value="Homme">Homme</option>
+						<option value="Femme">Femme</option>
 					</select>
 				</div>
 				<div class="col-md-3">
-					<select id="gender" class="form-control custom-select" name="gender">
+					<select id="fpermis" class="form-control custom-select" name="fpermis">
 						<option value="" selected="selected">Possède le permis ?</option>
-						<option value="oui">Oui</option>
-						<option value="non">Non</option>
+						<option value="Oui">Oui</option>
+						<option value="Non">Non</option>
 					</select>
 				</div>
 				<div class="col-md-3">
-					<select id="gender" class="form-control custom-select" name="gender">
+					<select id="fpoleemploi" class="form-control custom-select" name="fpoleemploi">
 						<option value="" selected="selected">Inscrit au Pôle Emploi ?</option>
-						<option value="oui">Oui</option>
-						<option value="non">Non</option>
+						<option value="Oui">Oui</option>
+						<option value="Non">Non</option>
 					</select>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 
 		<div class="row">
 			<div id="searchbtn" class="col-md-4 col-md-offset-4" style="margin-bottom: 20px">
-				<button class="btn btn-primary btn-block">Rechercher</button>
+				<button class="btn btn-primary btn-block" onclick="requete()">Rechercher</button>
 			</div>
 		</div>
 	</div>
@@ -108,7 +108,9 @@
 		<div class="row">
 			<table class="table table-striped table-hover table-bordered">
             <thead>
-              <tr class="table-info">
+              <tr class="info text-info">
+              	<th>Date</th>
+              	<th>Poste</th>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Email</th>
@@ -119,32 +121,48 @@
                 <th>Inscrit PE ?</th>
               </tr>
             </thead>
-            <tbody>
-            	<?php
-					try {
-						$bdd = new PDO('mysql:host=localhost;dbname=candidat;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-					} catch (Exception $e) {
-						die('Erreur : ' . $e->getMessage());
-					}
-					
-					$donnees = $bdd->query('SELECT * FROM informatique');
-
-					while($result = $donnees->fetch()) {
-						echo '<tr>' . 
-								'<td><span>' . $result['nom'] . '</span></td>' .
-								'<td><span>' . $result['prenom'] . '</span></td>' .
-								'<td><span>' . $result['email'] . '</span></td>' .
-								'<td><span>' . $result['codepostal'] . '</span></td>' .
-								'<td><span>' . $result['telephone'] . '</span></td>' .
-								'<td><span>' . $result['sexe'] . '</span></td>' .
-								'<td><span>' . $result['permis'] . '</span></td>' .
-								'<td><span>' . $result['poleemploi'] . '</span></td>' .
-							'</tr>';
-					}
-				?>
+            <tbody id="destinationrequete">
             </tbody>
           </table>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		/* On peut utiliser <body onload="requete()"> ou
+		window.addEventListener('load', requete, false);*/
+
+		function requete() {
+			var input1 = document.getElementById("fname").value;
+			var input2 = document.getElementById("fsurname").value;
+			var input3 = document.getElementById("femail").value;
+			var input4 = document.getElementById("fgender").value;
+			var input5 = document.getElementById("fzipcode").value;
+			var input6 = document.getElementById("fphonenumber").value;
+			var input7 = document.getElementById("fpermis").value;
+			var input8 = document.getElementById("fpoleemploi").value;
+			var inputs = [input1, input2, input3, input4, input5, input6, input7, input8];
+
+			if (window.XMLHttpRequest) {
+	            var xhr = new XMLHttpRequest();
+	        } else { // code pour IE6, IE5
+	            var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	        }
+
+	        xhr.open("POST", "requetes.php", true);
+	        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	        xhr.onreadystatechange = function() {
+		        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+		            document.getElementById("destinationrequete").innerHTML = this.responseText;
+		        }
+		    };
+        	xhr.send("inputs=" + inputs);
+		}
+	</script>
+
+	<script type="text/javascript">
+		function lancer(requete) {
+			addEvent(window, "load", requete);
+		}
+	</script>
 </body>
 </html>
