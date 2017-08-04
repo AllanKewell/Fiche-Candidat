@@ -190,8 +190,46 @@
 			} else {
 				document.getElementById('npe').checked = true;
 			}
+
+			//Envoi de l'Id actif pour modifier la table de la base de données
+
+			if (window.XMLHttpRequest) {
+	            var xhr2 = new XMLHttpRequest();
+	        } else { // code pour IE6, IE5
+	            var xhr2 = new ActiveXObject("Microsoft.XMLHTTP");
+	        }
+
+	        xhr2.open("POST", "modificationFiche.php", true);
+	        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	        xhr2.onreadystatechange = function() {
+		        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+		            
+		        }
+		    };
+        	xhr2.send("idactif=" + idActif);
 		}
 	</script>
+
+	<!-- <script type="text/javascript">
+		function modifierFiche() {
+			var idModif = document.getElementById("name").value;
+
+			if (window.XMLHttpRequest) {
+	            var xhr2 = new XMLHttpRequest();
+	        } else { // code pour IE6, IE5
+	            var xhr2 = new ActiveXObject("Microsoft.XMLHTTP");
+	        }
+
+	        xhr2.open("POST", "modificationFiche.php", true);
+	        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	        xhr2.onreadystatechange = function() {
+		        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+		            
+		        }
+		    };
+        	xhr2.send("idModif=" + idModif);
+		}
+	</script> -->
 
 	<!-- jQuery et Bootstrap.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" 
@@ -211,7 +249,7 @@
 	      		</div>
 
 		      	<div class="modal-body">
-		        	<form id="form" method="post" action="traitement-form.php" style="margin-top: 10px">
+		        	<form id="form" method="post" action="modificationFiche.php" style="margin-top: 10px">
 						<fieldset>
 							<div class="col-md-12">
 								<div class="input-group">
@@ -259,7 +297,7 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label class="control-label" for="address">Adresse</label>
-									<input class="form-control" type="text" id="address" name="address" placeholder="N° de la rue + nom de la rue" required />
+									<input class="form-control" type="text" id="address" name="address" placeholder="N° de la rue + nom de la rue" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -271,7 +309,7 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label class="control-label" for="zipcode">Code Postal</label>
-									<input class="form-control" type="text" id="zipcode" name="zipcode" placeholder="95140" required />
+									<input class="form-control" type="text" id="zipcode" name="zipcode" placeholder="95140" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -310,7 +348,7 @@
 		      	<div class="modal-footer">
 		      		<button type="button" class="btn btn-danger" style="float:left">Supprimer</button>
 		        	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-		        	<button type="submit" class="btn btn-primary" form="form">Modifier</button>
+		        	<button onclick="modificationFiche()" type="submit" class="btn btn-primary" form="form">Modifier</button>
 		      	</div>
 	    	</div>
 	  	</div>
