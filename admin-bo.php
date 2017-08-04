@@ -162,8 +162,8 @@
 	<script type="text/javascript">
 		function remplirChamps(elem) {
 			var idActif = elem.id;
-			
 			//Récupération des valeurs des champs de la table bootstrap
+			var c0 = document.getElementById('id' + idActif + 'c0').innerText;
 			var c3 = document.getElementById('id' + idActif + 'c3').innerText;
 			var c4 = document.getElementById('id' + idActif + 'c4').innerText;
 			var c5 = document.getElementById('id' + idActif + 'c5').innerText;
@@ -174,6 +174,7 @@
 			var c10 = document.getElementById('id' + idActif + 'c10').innerText;
 
 			//Injection des valeurs dans les champs du formulaire de la modal
+			document.getElementById('idfiche').value = c0;
 			document.getElementById('name').value = c3;
 			document.getElementById('surname').value = c4;
 			document.getElementById('email').value = c5;
@@ -251,6 +252,11 @@
 		      	<div class="modal-body">
 		        	<form id="form" method="post" action="modificationFiche.php" style="margin-top: 10px">
 						<fieldset>
+							<div style="display:none" class="col-md-12">
+								<div class="input-group">
+										<input type="text" id="idfiche" name="idfiche" value="" />
+								</div>
+							</div>
 							<div class="col-md-12">
 								<div class="input-group">
 										<span class="input-group-addon">Poste</span>

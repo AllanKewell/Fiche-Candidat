@@ -38,6 +38,7 @@
 		//Conversion de la date
 		$dateformulaire = date_format(date_create_from_format('Y-m-d', $result['date_creation']), 'd/m/Y');
 		echo '<tr id="' . $result['id'] . '" onclick="remplirChamps(this)" style="cursor: pointer" data-toggle="modal" data-target="#myModal">' .
+				'<td style="display:none" id="id'. $result['id'] .'c0"><span>' . $result['id'] . '</span></td>' .
 				'<td id="id'. $result['id'] .'c1"><span>' . $dateformulaire . '</span></td>' .
 				'<td id="id'. $result['id'] .'c2"><span>' . $result['poste'] . '</span></td>' .
 				'<td id="id'. $result['id'] .'c3"><span>' . $result['nom'] . '</span></td>' .

@@ -15,8 +15,8 @@
 			die('Erreur : ' . $e->getMessage());
 		}
 		
-		if(!empty($_POST['idactif'])) {
-			$insertion = $bdd->prepare('UPDATE informatique SET nom = :nom, prenom = :prenom, email = :email, sexe = :sexe, codepostal = :codepostal, telephone = :telephone, permis = :permis, poleemploi = :poleemploi WHERE id = :idactif');
+		if(!empty($_POST['idfiche'])) {
+			$insertion = $bdd->prepare('UPDATE informatique SET nom = :nom, prenom = :prenom, email = :email, sexe = :sexe, codepostal = :codepostal, telephone = :telephone, permis = :permis, poleemploi = :poleemploi WHERE id = :idfiche');
 		$insertion->execute(array(
 			/*'civilite' => strip_tags($_POST['civilite']),
 			'poste' => strip_tags($_POST['poste']),*/
@@ -31,7 +31,7 @@
 			/*'message' => strip_tags($_POST['message']),*/
 			'permis' => strip_tags($_POST['permis']),
 			'poleemploi' => strip_tags($_POST['poleemploi']),
-			'idactif' => strip_tags($_POST['idactif'])
+			'idfiche' => strip_tags($_POST['idfiche'])
 			));
 
 		$insertion->closeCursor();
