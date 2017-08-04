@@ -16,3 +16,36 @@
 .finputs {
 	margin-bottom: 10px;
 }
+
+.form-group {
+	margin-bottom: 0;
+	text-align: left;
+}
+
+
+label {
+	font-weight: normal;
+	margin-top: 15px;
+}
+
+input {
+	border: 2px solid #CCC !important;
+	height: 35px;
+	border-radius: 3px;
+	max-width: 100%;
+}
+
+.radiolabel {
+	margin-top: -2px !important;
+	margin-left: 10px;
+}
+
+.radioinput {
+	height: 0;
+	border-radius: 0;
+}
+
+.input-group-addon {
+  border: 2px solid #CCC !important;
+  border-right: 0px !important;
+}

@@ -30,24 +30,24 @@
 		$suiteRequete = 'ca marche pas';
 	}
 
-	$donnees = $bdd->prepare('SELECT * FROM informatique ' . $suiteRequete);
+	$donnees = $bdd->prepare('SELECT * FROM informatique ' . $suiteRequete . ' ORDER BY id DESC');
 	$donnees->execute($parametres);
 	//Fin Requête
 
 	while($result = $donnees->fetch()) {
 		//Conversion de la date
 		$dateformulaire = date_format(date_create_from_format('Y-m-d', $result['date_creation']), 'd/m/Y');
-		echo '<tr>' . 
-				'<td><span>' . $dateformulaire . '</span></td>' .
-				'<td><span>' . $result['poste'] . '</span></td>' .
-				'<td><span>' . $result['nom'] . '</span></td>' .
-				'<td><span>' . $result['prenom'] . '</span></td>' .
-				'<td><span>' . $result['email'] . '</span></td>' .
-				'<td><span>' . $result['codepostal'] . '</span></td>' .
-				'<td><span>' . $result['telephone'] . '</span></td>' .
-				'<td><span>' . $result['sexe'] . '</span></td>' .
-				'<td><span>' . $result['permis'] . '</span></td>' .
-				'<td><span>' . $result['poleemploi'] . '</span></td>' .
+		echo '<tr id="' . $result['id'] . '" onclick="remplirChamps(this)" style="cursor: pointer" data-toggle="modal" data-target="#myModal">' .
+				'<td id="id'. $result['id'] .'c1"><span>' . $dateformulaire . '</span></td>' .
+				'<td id="id'. $result['id'] .'c2"><span>' . $result['poste'] . '</span></td>' .
+				'<td id="id'. $result['id'] .'c3"><span>' . $result['nom'] . '</span></td>' .
+				'<td id="id'. $result['id'] .'c4"><span>' . $result['prenom'] . '</span></td>' .
+				'<td id="id'. $result['id'] .'c5"><span>' . $result['email'] . '</span></td>' .
+				'<td id="id'. $result['id'] .'c6"><span>' . $result['codepostal'] . '</span></td>' .
+				'<td id="id'. $result['id'] .'c7"><span>' . $result['telephone'] . '</span></td>' .
+				'<td id="id'. $result['id'] .'c8"><span>' . $result['sexe'] . '</span></td>' .
+				'<td id="id'. $result['id'] .'c9"><span>' . $result['permis'] . '</span></td>' .
+				'<td id="id'. $result['id'] .'c10"><span>' . $result['poleemploi'] . '</span></td>' .
 			'</tr>';
 	}
 
