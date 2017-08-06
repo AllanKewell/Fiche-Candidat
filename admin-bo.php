@@ -164,6 +164,7 @@
 			var idActif = elem.id;
 			//Récupération des valeurs des champs de la table bootstrap
 			var c0 = document.getElementById('id' + idActif + 'c0').innerText;
+			var c2 = document.getElementById('id' + idActif + 'c2').innerText;
 			var c3 = document.getElementById('id' + idActif + 'c3').innerText;
 			var c4 = document.getElementById('id' + idActif + 'c4').innerText;
 			var c5 = document.getElementById('id' + idActif + 'c5').innerText;
@@ -175,6 +176,7 @@
 
 			//Injection des valeurs dans les champs du formulaire de la modal
 			document.getElementById('idfiche').value = c0;
+			document.getElementById('poste').value = c2;
 			document.getElementById('name').value = c3;
 			document.getElementById('surname').value = c4;
 			document.getElementById('email').value = c5;
@@ -191,46 +193,33 @@
 			} else {
 				document.getElementById('npe').checked = true;
 			}
-
-			//Envoi de l'Id actif pour modifier la table de la base de données
-
-			if (window.XMLHttpRequest) {
-	            var xhr2 = new XMLHttpRequest();
-	        } else { // code pour IE6, IE5
-	            var xhr2 = new ActiveXObject("Microsoft.XMLHTTP");
-	        }
-
-	        xhr2.open("POST", "modificationFiche.php", true);
-	        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	        xhr2.onreadystatechange = function() {
-		        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-		            
-		        }
-		    };
-        	xhr2.send("idactif=" + idActif);
 		}
 	</script>
 
-	<!-- <script type="text/javascript">
-		function modifierFiche() {
-			var idModif = document.getElementById("name").value;
-
-			if (window.XMLHttpRequest) {
-	            var xhr2 = new XMLHttpRequest();
-	        } else { // code pour IE6, IE5
-	            var xhr2 = new ActiveXObject("Microsoft.XMLHTTP");
-	        }
-
-	        xhr2.open("POST", "modificationFiche.php", true);
-	        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	        xhr2.onreadystatechange = function() {
-		        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-		            
+	<script type="text/javascript">
+		function supprimerFiche() {
+			var confSupp = confirm("Êtes-vous sûr(e) de vouloir supprimer cette fiche candidat ?");
+		    if (confSupp == true) {
+		        var idfiche = document.getElementById("idfiche").value;
+				//Envoi de l'Id actif pour modifier la table de la base de données
+				if (window.XMLHttpRequest) {
+		            var xhr2 = new XMLHttpRequest();
+		        } else { // code pour IE6, IE5
+		            var xhr2 = new ActiveXObject("Microsoft.XMLHTTP");
 		        }
-		    };
-        	xhr2.send("idModif=" + idModif);
-		}
-	</script> -->
+
+		        xhr2.open("POST", "suppressionFiche.php", true);
+		        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		        /*xhr2.onreadystatechange = function() {
+			        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+			            
+			        }
+			    };*/
+		    	xhr2.send("idfiche=" + idfiche);
+		    	window.location.reload();
+		    }
+		} 
+	</script>
 
 	<!-- jQuery et Bootstrap.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" 
@@ -260,7 +249,7 @@
 							<div class="col-md-12">
 								<div class="input-group">
 										<span class="input-group-addon">Poste</span>
-										<input class="form-control" type="text" id="poste" name="poste" value="Informatique" disabled/>
+										<input class="form-control" type="text" id="poste" name="poste" value="" readonly />
 								</div>
 							</div>
 
@@ -276,7 +265,7 @@
 							<div class="form-group">
 								<div class="col-md-5">
 									<label class="control-label" for="name">Nom</label>
-									<input class="form-control" type="text" id="name" name="name" placeholder="Mon nom" required autofocus />
+									<input class="form-control" type="text" id="name" name="name" placeholder="Mon nom" required />
 								</div>
 							</div>
 							<div class="form-group">
@@ -309,7 +298,7 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label class="control-label" for="city">Ville</label>
-									<input class="form-control" type="text" id="city" name="city" placeholder="Ville" required />
+									<input class="form-control" type="text" id="city" name="city" placeholder="Ville" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -343,8 +332,8 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<label class="control-label">Inscrit PE ?</label>
-									<label class="radiolabel radio-inline"><input id="ope" class="radioinput" type="radio" name="poleemploi" value="Oui">Oui</label>
-									<label class="radiolabel radio-inline"><input id="npe" class="radioinput" type="radio" name="poleemploi" value="Non">Non</label>
+									<label class="radiolabel radio-inline"><input id="ope" type="radio" name="poleemploi" value="Oui">Oui</label>
+									<label class="radiolabel radio-inline"><input id="npe" type="radio" name="poleemploi" value="Non">Non</label>
 								</div>
 							</div>
 						</fieldset>
@@ -352,9 +341,9 @@
 		      	</div>
 
 		      	<div class="modal-footer">
-		      		<button type="button" class="btn btn-danger" style="float:left">Supprimer</button>
+		      		<button type="button" onclick="supprimerFiche()" class="btn btn-danger" style="float:left">Supprimer</button>
 		        	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-		        	<button onclick="modificationFiche()" type="submit" class="btn btn-primary" form="form">Modifier</button>
+		        	<button type="submit" class="btn btn-primary" form="form">Modifier</button>
 		      	</div>
 	    	</div>
 	  	</div>

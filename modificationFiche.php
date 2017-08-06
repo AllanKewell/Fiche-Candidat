@@ -16,10 +16,10 @@
 		}
 		
 		if(!empty($_POST['idfiche'])) {
-			$insertion = $bdd->prepare('UPDATE informatique SET nom = :nom, prenom = :prenom, email = :email, sexe = :sexe, codepostal = :codepostal, telephone = :telephone, permis = :permis, poleemploi = :poleemploi WHERE id = :idfiche');
-		$insertion->execute(array(
-			/*'civilite' => strip_tags($_POST['civilite']),
-			'poste' => strip_tags($_POST['poste']),*/
+			$modif = $bdd->prepare('UPDATE informatique SET poste = :poste, nom = :nom, prenom = :prenom, email = :email, sexe = :sexe, codepostal = :codepostal, telephone = :telephone, permis = :permis, poleemploi = :poleemploi WHERE id = :idfiche');
+		$modif->execute(array(
+			/*'civilite' => strip_tags($_POST['civilite']),*/
+			'poste' => strip_tags($_POST['poste']),
 			'nom' => strip_tags($_POST['name']),
 			'prenom' => strip_tags($_POST['surname']),
 			'email' => strip_tags($_POST['email']),
@@ -34,7 +34,7 @@
 			'idfiche' => strip_tags($_POST['idfiche'])
 			));
 
-		$insertion->closeCursor();
+		$modif->closeCursor();
 		}
 	?>
 </body>

@@ -1,6 +1,11 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h3 {
+	font-weight: normal;
 }
 
 .maindiv {
@@ -11,10 +16,6 @@
 	color: #fff;
     background-color: #428bca !important;
     border-color: #285e8e;
-}
-
-.finputs {
-	margin-bottom: 10px;
 }
 
 .form-group {
@@ -30,7 +31,6 @@ label {
 
 input {
 	border: 2px solid #CCC !important;
-	height: 35px;
 	border-radius: 3px;
 	max-width: 100%;
 }
@@ -40,12 +40,11 @@ input {
 	margin-left: 10px;
 }
 
-.radioinput {
-	height: 0;
-	border-radius: 0;
+.input-group-addon {
+  	border: 2px solid #CCC !important;
+  	border-right: 0px !important;
 }
 
-.input-group-addon {
-  border: 2px solid #CCC !important;
-  border-right: 0px !important;
+.table {
+	margin-bottom: 0 !important;
 }
