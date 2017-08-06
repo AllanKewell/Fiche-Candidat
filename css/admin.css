@@ -48,3 +48,13 @@ input {
 .table {
 	margin-bottom: 0 !important;
 }
+
+.nopaddingleft {
+   padding-left: 0 !important;
+   margin: 0 !important;
+}
+
+.nopaddingright {
+   padding-right: 0 !important;
+   margin: 0 !important;
+}

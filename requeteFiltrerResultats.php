@@ -26,8 +26,6 @@
 
 	if(!empty($tempRequete)) {
 		$suiteRequete = substr($tempRequete, 0, strlen($tempRequete) - 4);
-	} else {
-		$suiteRequete = 'ca marche pas';
 	}
 
 	$donnees = $bdd->prepare('SELECT * FROM informatique ' . $suiteRequete . ' ORDER BY id DESC');

@@ -36,72 +36,94 @@
 			</div>
 		</div>
 
-		<div class="row" style="margin: 20px 0 20px 0">
-			<div class="form-group">
-				<div class="col-md-3">
-					<div class="input-group">
-						<span class="input-group-addon">Par nom</span>
-						<input class="form-control" type="text" id="fname" placeholder="nom partiel ou complet" />
+			<div class="row" style="margin: 20px 0 20px 0">
+				<div class="form-group">
+					<div class="col-md-3">
+						<div class="input-group">
+							<span class="input-group-addon">Par nom</span>
+							<input class="form-control" type="text" id="fname" placeholder="nom partiel ou complet" />
+						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="input-group">
-						<span class="input-group-addon">Par prénom</span>
-						<input class="form-control" type="text" id="fsurname" placeholder="prénom partiel ou complet" />
+					<div class="col-md-3">
+						<div class="input-group">
+							<span class="input-group-addon">Par prénom</span>
+							<input class="form-control" type="text" id="fsurname" placeholder="prénom partiel ou complet" />
+						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="input-group">
-						<span class="input-group-addon">Par email</span>
-						<input class="form-control" type="text" id="femail" placeholder="exemple@mail.com" />
+					<div class="col-md-3">
+						<div class="input-group">
+							<span class="input-group-addon">Par email</span>
+							<input class="form-control" type="text" id="femail" placeholder="exemple@mail.com" />
+						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="input-group">
-						<span class="input-group-addon">Par code postal</span>
-						<input class="form-control" type="text" id="fzipcode" placeholder="95700" />
+					<div class="col-md-3">
+						<div class="input-group">
+							<span class="input-group-addon">Par code postal</span>
+							<input class="form-control" type="text" id="fzipcode" placeholder="95700" />
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="row" style="margin: 0 0 30px 0">
-			<div class="form-group">
-				<div class="col-md-3">
-					<div class="input-group">
-						<span class="input-group-addon">Par téléphone</span>
-						<input class="form-control" type="text" id="fphonenumber" placeholder="06 12 34 56 78" />
+			<div class="row" style="margin: 0 0 30px 0">
+				<div class="form-group">
+					<div class="col-md-3">
+						<div class="input-group">
+							<span class="input-group-addon">Par date</span>
+							<input class="form-control" type="text" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" id="fdate" placeholder="01/08/2017" />
+						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<select id="fgender" class="form-control custom-select" name="fgender">
-						<option value="" selected="selected">Choisir le sexe</option>
-						<option value="Homme">Homme</option>
-						<option value="Femme">Femme</option>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<select id="fpermis" class="form-control custom-select" name="fpermis">
-						<option value="" selected="selected">Possède le permis ?</option>
-						<option value="Oui">Oui</option>
-						<option value="Non">Non</option>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<select id="fpoleemploi" class="form-control custom-select" name="fpoleemploi">
-						<option value="" selected="selected">Inscrit au Pôle Emploi ?</option>
-						<option value="Oui">Oui</option>
-						<option value="Non">Non</option>
-					</select>
-				</div>
-			</div>
-		</div>
 
-		<div class="row">
-			<div id="searchbtn" class="col-md-4 col-md-offset-4" style="margin-bottom: 20px">
-				<button class="btn btn-primary btn-block" onclick="filtrerResultats()">Rechercher</button>
+					<div class="col-md-3">
+						<div class="input-group">
+							<span class="input-group-addon">Par téléphone</span>
+							<input class="form-control" type="text" id="fphonenumber" placeholder="06 12 34 56 78" />
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="col-md-6 nopaddingleft">
+							<select id="fgender" class="form-control custom-select" name="fgender">
+								<option value="" selected="selected">Choisir le sexe</option>
+								<option value="Homme">Homme</option>
+								<option value="Femme">Femme</option>
+							</select>
+						</div>
+						<div class="col-md-6 nopaddingright">
+							<select id="fpermis" class="form-control custom-select" name="fpermis">
+								<option value="" selected="selected">Permis ?</option>
+								<option value="Oui">Oui</option>
+								<option value="Non">Non</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="col-md-6 nopaddingleft">
+							<select id="fpoleemploi" class="form-control custom-select" name="fpoleemploi">
+								<option value="" selected="selected">Inscrit au Pôle Emploi ?</option>
+								<option value="Oui">Oui</option>
+								<option value="Non">Non</option>
+							</select>
+						</div>
+						<div class="col-md-6 nopaddingright">
+							<select id="fthandi" class="form-control custom-select" name="fthandi">
+								<option value="" selected="selected">Travailleur handicapé ?</option>
+								<option value="Oui">Oui</option>
+								<option value="Non">Non</option>
+							</select>	
+						</div>
+					</div>
+					
+				</div>
 			</div>
-		</div>
+
+			<div class="row">
+				<div id="searchbtn" class="col-md-4 col-md-offset-4" style="margin-bottom: 20px">
+					<button class="btn btn-primary btn-block" onclick="filtrerResultats()">Rechercher</button>
+				</div>
+			</div>	
+		
 	</div>
 
 	<div id="results" class="container-fluid">
@@ -140,7 +162,8 @@
 			var input6 = document.getElementById("fphonenumber").value;
 			var input7 = document.getElementById("fpermis").value;
 			var input8 = document.getElementById("fpoleemploi").value;
-			var inputs = [input1, input2, input3, input4, input5, input6, input7, input8];
+			var input9 = document.getElementById("fdate").value;
+			var inputs = [input1, input2, input3, input4, input5, input6, input7, input8, input9];
 
 			if (window.XMLHttpRequest) {
 	            var xhr = new XMLHttpRequest();
@@ -222,11 +245,19 @@
 	</script>
 
 	<!-- jQuery et Bootstrap.js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" 
-			type="text/javascript"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" 
+			type="text/javascript"></script> -->
+<!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
 			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
 			crossorigin="anonymous"></script>
+
+<!-- 	<script type="text/javascript">
+		$(function() {
+     $( "#fdate" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+});
+	</script> -->
 
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog" style="display: none;">
